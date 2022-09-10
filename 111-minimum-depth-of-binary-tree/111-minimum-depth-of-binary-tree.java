@@ -15,15 +15,36 @@
  */
 class Solution {
     public int minDepth(TreeNode root) {
-        int []min = new int[1];
-        min[0] = Integer.MAX_VALUE;
-        // pass by reference
-        minDepth(root, 1, min);
-        // handle empty tree
-        if(min[0] == Integer.MAX_VALUE) {
-            min[0] = 0;
+        if(root == null) {
+            return 0;
         }
-        return min[0];
+        
+        Queue<TreeNode> que = new ArrayDeque<>();
+        que.add(root);
+        int level = 1;
+        
+        while(!que.isEmpty()) {
+            int n = que.size();
+            while(n-- > 0) {
+                TreeNode curr = que.poll();
+                
+                if(curr.left == null && curr.right == null) {
+                    return level;
+                }
+                
+                if(curr.left != null) {
+                    que.add(curr.left);
+                }
+                
+                if(curr.right != null) {
+                    que.add(curr.right);
+                }
+            }
+            
+            level++;
+        }
+        
+        return level;
     }
     
     private void minDepth(TreeNode root,int curr, int []min) {
