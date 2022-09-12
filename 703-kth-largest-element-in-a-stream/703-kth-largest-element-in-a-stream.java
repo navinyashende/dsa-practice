@@ -12,12 +12,9 @@ class KthLargest {
     }
     
     public int add(int val) {
-        if(pq.size() < k) {
-            pq.add(val);
-        }
-        else if(pq.peek() < val) {
+        pq.add(val);
+        if(pq.size() > k) {
             pq.poll();
-            pq.add(val);
         }
         return pq.peek();
     }
