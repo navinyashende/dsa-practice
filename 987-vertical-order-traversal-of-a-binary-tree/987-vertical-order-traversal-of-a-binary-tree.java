@@ -42,7 +42,8 @@ class Solution {
         Queue<BTreeNode> queue = new ArrayDeque<>();
         queue.add(new BTreeNode(root, 0,0));
         
-        while(!queue.isEmpty()) {
+        while( !queue.isEmpty() ) 
+        {
             BTreeNode curr = queue.remove();
             int currRow = curr.row;
             int currCol = curr.col;
